@@ -1,0 +1,613 @@
+html {
+    height: 100%;
+    background: linear-gradient(to bottom right, #a2c1d1, #e6eef3);
+    font-family: 'Rubik', sans-serif;
+}
+
+.InnerborderBox {
+    height: 72rem;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.Innerborder {
+    width: 100%;
+    height: 8rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px 25px 0 0;
+}
+
+.Horsebox {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.move, .move1, .move2, .move3, .move4 {
+    width: 13%;
+    height: 70px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+}
+
+.move:hover, .move1:hover, .move2:hover, .move3:hover, .move4:hover {
+    color: #4eb9f9;
+    border-bottom: 2px solid #4eb9f9;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.move::after, .move1::after, .move2::after, .move3::after, .move4::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: #4eb9f9;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.move:hover::after, .move1:hover::after, .move2:hover::after, .move3:hover::after, .move4:hover::after {
+    width: 100%;
+    left: 0;
+}
+.container{
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    color: #000;
+}
+.NameBox p{
+    color: #000;
+}
+.InnerborderBox2 {
+    display: flex;
+    flex-direction: column;
+    height: 13rem;
+    width: 22rem;
+    position: fixed;
+    border-radius: 25px;
+    margin-top: 15rem;
+    margin-left: 4rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+/* weather */
+.weather-box {
+    width: 100%; 
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 右上角重整按鈕 */
+.Weatherbutton {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4) url('../assets/images/restart.png') no-repeat center center;
+    background-size: 60%;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    transition: transform 2s ease, background-color 0.3s;
+    cursor: pointer;
+}
+.Weatherbutton:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.Weatherbutton:active {
+    transform: rotate(720deg);
+}
+.Weatherbutton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 天氣內容容器 */
+.weather-info-box {
+    width: auto;
+    height: 85%;
+    display: flex;
+    align-items: center;
+}
+
+/* 天氣圖＋溫度 */
+.weather-info {
+    display: flex;
+    margin-top: 10px;
+    top: 0;
+}
+
+.weather-info img {
+    width: 10rem;
+    height: 8rem;
+    margin-right: 20px;
+    margin-left: 5%;
+}
+
+/* 溫度文字 */
+.temperature-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+    margin-top: 5px;
+}
+
+/* 溫度數字*/
+.temperaturetext1-box {
+    margin-top: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.temperaturetext1 {
+    font-size: 50px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.temperaturetext {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* MUSIC */
+.musicbox {
+    margin-top: 5rem;
+    width: 22rem;
+    height: 31rem;
+    display: flex;
+}
+
+.music-control-box {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.music-control-box h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/*  修改播放標題與圖示區域 */
+.music-control-box img {
+    display: block;
+    margin: 0 auto;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+/* 修改播放按鈕與音量滑桿 */
+.music-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.music-controls button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.music-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}
+/* 音量條玻璃化 */
+.volume-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 35px;
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.18); /* 淺白底 */
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.volume-toggle-button {
+    background-color: rgba(0, 0, 0, 0.3); /* 更深的底色 */
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.volume-toggle-button:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* hover 更深 */
+}
+
+.volume-toggle-button img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+.volume-slider input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #cde7ff; /* 藍底條 */
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.volume-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #007BFF; /* 主藍色圓點 */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.volume-slider input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #007BFF;
+    cursor: pointer;
+}
+
+/* air conditioner */
+.AirConditionerinBox {
+    width: 85%;
+    height: 91%;
+    padding: 2rem;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+}
+/* 圓形錶盤 */
+.circle-screen {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.25),
+                0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 中心文字風格強化 */
+.temperature {
+    font-size: 80px;
+    margin-top: 10px;
+    margin-left: 25px;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.screen-text {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    opacity: 0.8;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+/* 控制按鈕 */
+.plusIcon, .SubtractionIcon, .powerIcon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.plusIcon:hover, .SubtractionIcon:hover, .powerIcon:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    filter: brightness(1.5);
+    transform: scale(1.05);
+}
+/* 指針標記可選藍色亮感 */
+.circle-marker {
+    position: absolute;
+    width: 48px;
+    height: 5px;
+    background-color: #00BFFF; /* 替代亮綠色為藍色光條 */
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
+}
+.power-container {
+    /* margin-top: 5px; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.powerIcon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.powerIcon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.powerIcon:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+    filter: brightness(1.3);
+}
+
+/* 冷氣按鈕 */
+.timebox, .Sleep , .mon{
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    color: #333;
+}
+.Timerinbox p, .Sleep p {
+    color: rgba(0, 0, 0, 0.6); /* 白中帶灰，比純白更清楚 */
+    font-weight: 500;
+}
+.timebox span {
+    display: flex;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.15); /* 玻璃淡白感 */
+    width: 2px;
+    height: 80%;
+    margin: 0 8px;
+    backdrop-filter: blur(6px);
+}
+.Timerinbox img, .Sleep img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.Timerinbox:hover, .Timerinbox2:hover, .Sleep:hover, .mon:hover {
+    transform: scale(1.08);
+    /* box-shadow: 0 6px 18px rgba(0, 174, 255, 0.3); */
+}
+
+/* 風速按鈕區塊 */
+.fan-speed {
+    padding: 1rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border-radius: 15px;
+    margin: 0.5rem;
+    transition: background 0.3s ease, transform 0.2s;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.fan-speed:hover {
+    background: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.fan-speed.active {
+    background-color: #00c8ff;
+    color: white;
+    box-shadow: 0 4px 14px rgba(0, 200, 255, 0.3);
+}
+/* cycleIcon  */
+.cycleIcon {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+}
+
+.cycleIcon:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+}
+
+.cycleIcon.active {
+    background-color: #00c8ff;
+    color: #888;
+    box-shadow: 0 4px 14px rgba(0, 200, 255, 0.3);
+}
+.AirVolumeControlBox {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    margin-top: 1rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+.AirVolumeControlBox p{
+    color: rgba(0, 0, 0, 0.6);;
+}
+.AirVolume span{
+    display: flex;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.15); /* 玻璃淡白感 */
+    width: 2px;
+    height: 80%;
+    margin-top: 10px;
+}
+/* chart */
+.EnergyCharBox {
+    margin-top: 10px;
+    margin-left: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    height: 90%;
+    width: 45rem;
+}
+/* 家電 */
+.MixOtherBox {
+    display: flex;
+    width: 45%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.MixOtherBox:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.ButtoncheckBox {
+    width: 95%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    color: rgba(0, 0, 0, 0.75);
+    justify-content: space-between;
+    font-weight: 400;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 10%;
+    background: none;
+}
+
+.slider {
+    background-color: rgba(0, 0, 0, 0.2); /* 未啟用更柔和 */
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+input:checked + .slider {
+    background-color: #00C776;
+    box-shadow: 0 0 8px rgba(0, 199, 118, 0.4);
+}
+.LightBulb img,.CCTV img,.fan img,.Extensioncord img {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.LightBulb img:hover,.CCTV img:hover,.fan img:hover,.Extensioncord img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.homeColorSwitch{
+    background-color: transparent;
+}

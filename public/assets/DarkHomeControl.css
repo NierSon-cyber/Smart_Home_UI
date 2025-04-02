@@ -1,0 +1,1002 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@font-face {
+    font-family: 'Roboto';
+    src: url('../assets/fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    
+    font-weight: 100 300 500 900;
+    font-style: normal;
+}
+html{
+    height: 100%;
+    background:#333;
+}
+.InnerborderBox{
+    height: 72rem;
+    width: 70%;
+    background:#000;
+    border-radius: 15px;
+    display: flex;
+    position: fixed;
+    /* NEW */
+    flex-direction: column;
+    overflow: hidden;
+    /* change */
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%
+}
+
+.Innerborder{
+    right:10px;
+    background:#000;
+    border-radius: 15px;
+    /* NEW */
+    width: 100%;
+    height: 8rem;
+    display:flex;
+    flex-direction: column;
+    overflow: auto;
+    /* change */
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0;
+    left: 50%;
+}
+.Horsebox{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    /* margin-top: 10px; */
+    
+    /* border-bottom: 2px solid #444; */
+    
+}
+/* .move h1, .move1 h1, .move2 h1, .move3 h1, .move4 h1 {
+    background: transparent !important;
+} */
+.move, .move1, .move2, .move3, .move4 {
+    width: 13%;
+    height: 70px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    /* background-image: linear-gradient(to right, white, #444);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;  */
+    border-bottom: 2px solid #333;
+    position: relative; /* 為了讓 ::after 定位 */
+    overflow: hidden;  /* 避免動畫影響佈局 */
+    transition: all 0.3s ease-in-out;
+}
+.move0{
+    width: 13rem;
+    height: 70px;
+    /* background: #ECECEC; */
+    color: white;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    
+}
+.move:hover , .move1:hover, .move2:hover, .move3:hover, .move4:hover {
+    box-shadow: 0 8px 10px #888;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom: 2px solid #98D8EF;
+    transition: background-color 0.3s 0.2s ease-in-out, color 0.3s 0.2s ease-in-out, box-shadow 0.3s 0.2s;
+    opacity: 1 ;
+}
+/* .move:hover , .move1:hover, .move2:hover, .move3:hover, .move4:hover,  .wave{
+    isolation: isolate;
+} */
+/* 用 ::after 來做底部邊框動畫 */
+.move::after, 
+.move1::after, 
+.move2::after, 
+.move3::after, 
+.move4::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: 98D8EF;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+.move:hover::after, 
+.move1:hover::after, 
+.move2:hover::after, 
+.move3:hover::after, 
+.move4:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* 這邊是棟特效每個  hourseName 的TITLE*/
+
+.container {
+    width: 15rem;
+    height: 4rem;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    margin-top: 25px;
+    margin-left: 3rem;
+    /* border: 2px solid rgba(255, 255, 255, 0.3); */
+    border: 2px solid #DADADA;
+    border-radius: 30px;
+    position: relative;
+}
+.circle {
+    width: 44px; /* 圓形的寬度 */
+    height: 44px; /* 圓形的高度 */
+    border-radius: 50%; /* 使 div 變為圓形 */
+    overflow: hidden; /* 確保圖片不會超出圓形範圍 */
+    display: flex;
+    /* border: 1px solid rgba(255, 255, 255, 0.76); */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-left: 10px;
+    margin-right: 5%;
+}
+.robot{
+    width: 90%; 
+    height: 90%;
+}
+.pen{
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    margin-top:35px;
+    margin-left:1%;
+    width: 3%;
+    /* height: 70%; */
+}
+.NameBox{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+/* 向下箭頭 */
+.ChevronDowBox{
+    display: flex;
+    width: 20%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+/* 時間 */
+.currentTimebox{
+    width: 28rem;
+    height: 4rem;
+    margin-top: 8rem;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+
+}
+.current-time-heading {
+    color: #FF8000;
+    text-align: center;
+    font-size: 36px;
+    margin-top: 1rem;
+    font-weight: 500;
+    font-family: 'Rubik', sans-serif;
+}
+
+.InnerborderBox2{
+    display: flex;
+    flex-direction: column;
+    height: 13rem;
+    width: 22rem;
+    position: fixed;
+    border-radius: 15px;
+    margin-top: 15rem;
+    margin-left: 4rem;
+    /* top: 28%; */
+    /* left: 13%; */
+}   
+/* weather */
+.weather-box{
+    width: 20rem;
+    height: 100%;
+    padding: 20px;
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #000;
+
+}
+/* .weather-box img {
+    width: 100px;
+} */
+.Weatherbutton{
+    position: absolute;
+    right: 5px; /* 按鈕固定在最右邊 */
+    top: 5px; /* 按鈕在最上面 */
+    border: none;
+    background: url('../assets/images/restart.png') no-repeat center center;
+    width: 28px; /* 按鈕的寬度 */
+    height: 28px; /* 按鈕的高度 */
+    background-size: contain;
+    transition: transform 2s ease;
+    cursor: pointer;
+}
+.Weatherbutton:active {
+    transform: rotate(720deg); /* 按鈕按下後旋轉一圈 */
+}
+/* 禁用狀態的按鈕 */
+.Weatherbutton:disabled {
+    opacity: 0.5; /* 當按鈕禁用時，讓它變得半透明 */
+    cursor: not-allowed; /* 當按鈕禁用時，改變鼠標指標為禁止狀態 */
+}
+.weather-info-box{
+    width: auto;
+    height: 80%;
+    display: flex;
+    /* justify-content: center;  */
+    align-items: center; /* 使圖片和溫度文字在垂直方向居中 */
+}
+.weather-info {
+    display:flex;
+    margin-top: 10px; /* 保證每個部分之間有間距 */
+    top: 0;
+}
+.temperature-info{
+    display: flex;
+    align-items: center; /* 使內容垂直居中 */
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+}
+
+.weather-info img {
+    width: 10rem; /* 設定天氣圖像的大小 */
+    height: 8rem; /*設定天氣圖像的大小 */
+    margin-right: 20px; /* 圖片與文字之間的間距 */
+    margin-left: 5%;
+}
+
+.temperaturetext1-box{
+    /* margin-left: 20%;。 */
+    margin-top: 20%;
+    display: flex;
+    align-items: center; /* 使溫度文字垂直居中 */
+    justify-content: center; /* 使溫度文字水平居中 */
+}
+.temperaturetext1{
+    font-size: 50px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; 
+}
+.temperaturetext{
+    font-size: 28px;
+    color: #fff;
+    font-family: 'Quicksand', sans-serif ;
+    font-weight: 500;
+    
+}
+/* 音樂控制 */
+.musicbox {
+    margin-top: 5rem;
+    width: 22rem;
+    height: 31rem;
+    display: flex;
+    
+}
+.music-control-box {
+    /* display: flex; */
+    width: 99%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(128, 128, 128, 0.3);
+    color: white;
+    backdrop-filter: blur(10px);
+    /* -webkit-backdrop-filter: blur(10px); */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #888;
+    border-radius: 15px;
+}
+
+.music-control-box h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.music-control-box img {
+    display: block;
+    margin: 0 auto;
+    width: 15rem;
+    height: 15rem;
+}
+
+.music-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.track-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+/* 播放的特效 */
+.wave {
+    display: flex;
+    gap: 3px;
+    margin-top: 5px;
+}
+.wave span {
+    display: inline-block;
+    width: 3px;
+    height: 10px;
+    background-color: #fff;
+    opacity: 1;
+}
+.playing .wave span {
+    animation: wave 1s infinite ease-in-out;
+}
+
+.playing .wave span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.playing .wave span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(2);
+    }
+}
+/* 音量 */
+.volume-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+}
+.volume-toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+.volume-toggle-button img {
+    width: 20px;
+    height: 20px;
+}
+.volume-slider input[type="range"] {
+    flex: 1;
+}
+
+.music-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.music-controls button {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.music-controls button:hover {
+    background-color: #444;
+}
+.volume-slider {
+    margin-top: 35px;
+    width: 100%;
+}
+.volume-slider input[type="range"] {
+    width: 100%;
+}
+/* air conditioner */
+.AirConditionerBox{
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: 33rem;
+    display: flex;
+    flex-direction: column;
+    height: 60rem;
+    width: 35rem;
+    max-width: 35rem;
+    color: #fff;
+}
+.AirConditionerinBox{
+    /* width: 30rem;
+    height: 52rem; */
+    width: 85%;
+    height:91%;
+    padding: 2rem;
+    margin-top: 10px;
+    background: rgba(128, 128,128, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #888;
+    border-radius: 15px;
+}
+.air-header {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.WifiIcon{
+    width: 35px;
+    height:35px;
+    display: flex;
+    cursor: pointer;
+}
+.time-date{
+    margin-left: 15px;
+    font-size: 20px;
+}
+.setingIcon{
+    width: 35px;
+    height:35px;
+    display: flex;
+    margin-left: auto;
+    cursor: pointer;
+}
+.AirConditionerIconBox{
+    width: 100%;
+    height: 11rem;
+    display: flex;
+    
+}
+.AirConditionerIcon{
+    display: flex;
+    margin: 0 auto;
+}
+.circle-container {
+    /* background: rgba(128, 128,128, 0.3); */
+    position: relative;
+    /* width: 20rem;
+    height: 15rem; */
+    width:100%;
+    height:15rem;
+    margin-top: 3rem;
+    /* margin-left: 7rem; */
+    /* margin-: 0 auto; */
+    display: flex;
+}
+
+  /* 中間圓形螢幕 */
+.circle-screen {
+    position: relative;
+    z-index: 1; /* 確保圓形在最上層 */
+    /* width: 95%;
+    height: 94%; */
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    margin: auto; /* 自動置中 */
+    background-color: #333;       /* 圓形底色 */
+    border: 4px solid #999;       /* 圓形邊框，可自行調整顏色或粗細 */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rotating-needle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    animation: rotateNeedle 1s linear infinite;
+    pointer-events: none; /* 防止影響其他互動 */
+    /* 預設 animation-play-state 為 running */
+    animation-play-state: running;
+}
+.rotating-needle.paused {
+    animation-play-state: paused;
+}
+  /* 螢幕中的文字示例（可換成任何您需要的內容） */
+.screen-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+
+.screen-text span{
+    display: block;
+    
+}
+.temperature{
+    font-size: 80px;
+    /* margin: 0 auto; */
+    margin-top: 10px;
+    margin-left: 25px;
+    /* margin-bottom: 10px; */
+    font-family: 'Quicksand', sans-serif;
+    color: #fff;
+}
+.circle-marker {
+    position: absolute;
+    width: 48px;
+    height: 5px;
+    background-color: #39FF14; /* 亮綠色 */
+    /* border-radius: 50px; */
+    top: 0; /* 放在容器頂部 */
+    left: 50%;
+    transform: translate(-50%, -50%); /* 讓中心對齊上邊界 */
+}
+  /* 旋轉動畫 */
+@keyframes rotateNeedle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* SVG 的樣式 */
+.needle-svg {
+    width: 100%;
+    height: 100%;
+}
+.pluscontrol, .Subtractioncontrol{
+    display: flex;
+    width: 25%;
+    height: 100%;
+    justify-content: center;
+    /* align-items: center; */
+}
+.plusIcon{
+    width: 60px;
+    height:60px;
+    margin-top: 190px;
+    /* margin-right: 25px; */
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    transition: filter 0.3s ease;
+}
+.SubtractionIcon{
+    width: 65px;
+    height:65px;
+    margin-top: 187px;
+    /* margin-bottom: 2px; */
+    cursor: pointer;
+    border: none;
+    display: flex;
+    /* margin-left: 20px; */
+    background-color: transparent;
+    transition: filter 0.3s ease;
+}
+.plusIcon img, .SubtractionIcon img,.powerIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 讓圖片自動縮放，不變形 */
+}
+
+.powerIcon{
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    transition: filter 0.3s ease;
+}
+.powerIcon:hover, .plusIcon:hover, .SubtractionIcon:hover{
+    filter: brightness(3.0);
+}
+
+
+/* 自訂義 */
+.controlBox{
+    height:10rem;
+    width: 100%;
+    display: flex;
+    margin-top: 3rem;
+    position: relative;
+}
+
+.timebox{
+    width: 10rem;
+    height: 80%;
+    display: flex;
+    flex-direction:row;
+    background-color: #555;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+.Timerinbox, .Timerinbox2{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: box-shadow 0.1s ease, transform 0.1s ease; /* 平滑過渡效果 */
+}
+.Timerinbox:hover, .Timerinbox2:hover {
+    transform: scale(1.25); /* 輕微放大效果 */
+}
+.Timerinbox img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+.Timerinbox p, .Timerinbox2 p{
+    display: block;
+    color: white;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.timebox span{
+    display: flex;
+    border-radius: 25px;
+    background-color: #333;
+    width: 5px;
+    height: 100%;
+}
+.Sleep, .mon{
+    width: 7rem;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2rem;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #555;
+    justify-content: center; /* 讓元素間的空間分開 */
+    align-items: center; /* 使圖片置中 */
+}
+.Sleep p{
+    margin-top:20px
+
+}
+.Sleep img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+.AirVolumeControlBox{
+    height:8rem;
+    width: 100%;
+    display: flex;
+    position: relative;
+    background-color: #555;
+    border-radius: 25px;
+    margin-top: 1rem;
+}
+.AirVolume{
+    height:100%;
+    width: 100%;
+    display: flex;
+}
+.AirVolumeBox{
+    height:100%;
+    width: 28%;
+    flex-direction: row;
+    display: block;
+    margin-top: 10px;
+}
+.AirVolumeBox img{
+    height:64px;
+    width: 64px;
+}
+.AirVolume span, .cycleIcon span{
+    display: flex;
+    /* border-radius: 25px; */
+    /* border: 2px solder #333; */
+
+    background-color: #333;
+    width: 2px;
+    height: 100%; 
+}
+.fan-speed {
+    padding: 1rem;
+    cursor: pointer;
+    /* border-radius: 8px; */
+    background-color: #555;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s ease;
+
+}
+
+.fan-speed.active{
+    background-color: #00c8ff; /* 高亮顯示選中的風量 */
+}
+
+.fan-speed:hover {
+    background-color: #444; /* 懸停時稍微變色 */
+}
+
+.fan-speed p {
+    /* margin-top: 20px; */
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;                /* Enable flexbox */
+    justify-content: center;      /* Center text horizontally */
+    align-items: center;          /* Center text vertically */
+    height: 100%;     
+}
+
+.cycleIcon {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #555;
+    padding: 0 10px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.cycleIcon img {
+    margin-top: 14px; 
+    height: 50px;
+    width: 50px;
+}
+
+.cycleIcon p {
+    margin: 10px 0 0;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
+
+.cycleIcon:hover {
+    background-color: #444;
+}
+.cycleIcon.active{
+    background-color: #00c8ff; /* 高亮顯示選中的風量 */
+}
+
+/* EnergyBOx */
+.EnergyBox{
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: 73rem;
+    display: flex;
+    height: 20rem;
+    width: 38rem;
+    max-width: 37rem;
+
+}
+.EnergyCharBox{
+    margin-top: 10px;
+    margin-left: 3px;
+    border: 2px solid #888;
+    background-color: rgba(128, 128, 128, 0.3);
+    border-radius: 25px;
+    display: flex;
+    height: 90%;
+    width: 45rem;
+}
+.otherBox{
+    position: absolute;
+    margin-top: 31rem;
+    margin-left: 73rem;
+    display: flex;
+    height: 18rem;
+    width: 45rem;
+    max-width: 45rem;
+    justify-content: space-between;
+
+}
+.MixOtherBox{
+    display: flex;
+    width: 45%;
+    height: 100%;
+    border: 2px solid #888;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color:  rgba(128, 128, 128, 0.3);
+    align-items: center;
+    /* padding: 0 10px; */
+    /* margin-left: 3.5rem; */
+}
+.otherBox1{
+    position: absolute;
+    margin-top: 51rem;
+    margin-left: 73rem;
+    display: flex;
+    height: 18rem;
+    width: 45rem;
+    max-width: 45rem;
+    justify-content: space-between;
+}
+.CCTV{
+    display: block;
+    padding: 0 15px;
+}
+
+.CCTV img{
+    display: flex;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 40%;
+}
+.LightBulb{
+    width: 95%;
+    height: 100%;
+    justify-content: center;
+    display: block;
+}
+.LightBulb img{
+    display: flex;
+    width: 60%;
+    height: 60%;
+    margin-top: 1rem;
+    margin-left: 3.5rem;
+    margin-bottom: 18px;
+}
+.fan{
+    width: 95%;
+    height: 100%;
+    justify-content: center;
+    display: block;
+}
+.fan img{
+    display: flex;
+    width: 60%;
+    height: 60%;
+    margin-top: 1rem;
+    margin-left: 4.5rem;
+    margin-bottom: 18px;
+}
+.Extensioncord{
+    width: 95%;
+    height: 100%;
+    justify-content: center;
+    display: block;
+}
+.Extensioncord img{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+    margin-bottom: 18px;
+}
+.ButtoncheckBox{
+    width: 95%;
+    height: 4rem;
+    display: flex;
+    align-items:center;
+    /* margin-top: 2rem; */
+    margin-left: auto;
+    background-color: rgba(128, 128, 128, 0.6);
+    color: white;
+    border-radius: 25px;
+    justify-content: space-between;
+}
+.ButtoncheckBox span {
+    display: flex;
+    margin-left: 1rem;
+}
+/* 開關特效 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right:10%;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+  /* 背景滑塊 */
+.slider {
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #888;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+  /* 開關內部圓形 */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+  /* 當 switchOn 為 true 時，背景變成 #00A0CC 並移動圓形 */
+input:checked + .slider {
+    background-color: #00C776;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+/* home */
+.homeColorBox{
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    /* z-index: 1000; 確保不被蓋住 */
+    /* background-color: #000; */
+    /* border-radius: 25px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid #000; 黑色外框 */
+
+}
+.homeColorSwitch{
+    width: 30px;
+    height: 30px;
+    background-color: #000;
+    border:none;
+    border-radius: 50px;
+    padding: 0;
+    cursor: pointer;
+}
+.homeColorSwitch img{
+    width: 30px;
+    height: 30px;
+    /* background-color: #fff; */
+    border-radius: 50%;
+}
